@@ -11,6 +11,7 @@ public class Locators {
     @Test
     public void LocatorsTest() throws InterruptedException {
         String username="Imran";
+        String password;
         System.setProperty("webdriver.chrome.driver","src/main/resources/Drivers/chromedriver.exe");
         WebDriver driver=new ChromeDriver();
 
@@ -44,12 +45,14 @@ public class Locators {
         String message=driver.findElement(By.className("infoMsg")).getText();
         System.out.println(message);
         Assert.assertEquals(message,"Please use temporary password 'rahulshettyacademy' to Login.");
+        String[] passwordArray=message.split("'");
+        password=passwordArray[1].split("'")[0];
         driver.findElement(By.className("go-to-login-btn")).click();
         Thread.sleep(1000); // element click intercepted exception
 
         //Re-login
         driver.findElement(By.xpath("//*[@placeHolder='Username']")).sendKeys(username);
-        driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys("rahulshettyacademy");
+        driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys(password);
         driver.findElement(By.cssSelector("#chkboxOne")).click();
         driver.findElement(By.xpath("//*[@class='submit signInBtn']")).click();
         Thread.sleep(1000);
