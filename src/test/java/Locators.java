@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -58,7 +60,31 @@ public class Locators {
         Thread.sleep(1000);
         Assert.assertEquals(driver.findElement(By.tagName("p")).getText(),"You are successfully logged in.");
         Assert.assertTrue(driver.findElement(By.cssSelector("h2")).getText().contains(username));
-        driver.findElement(By.xpath("//*[text()='Log Out']")).click();
+        driver.findElement(By.xpath("//*[text()='Log Out']")).click(); // Same as //*[.='Log Out']
+        driver.quit();
+    }
+
+    @Test(priority = 1)
+    public void Siblings(){
+//        System.setProperty("webdriver.chrome.driver","src/main/resources/Drivers/chromedriver.exe");
+//        WebDriver driver=new ChromeDriver();
+
+        System.setProperty("webriver.gecko.driver","src/main/resources/Drivers/geckodriver.exe");
+        WebDriver driver=new FirefoxDriver();
+
+        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+        System.out.println("Main Element: "+driver.findElement(By.xpath("//header/div/button[2]")).getText());
+
+        //Following-sibling
+        System.out.println("Following-sibling: "+driver.findElement(By.xpath("//header/div/button[2]/following-sibling::button")).getText());
+
+        //Preceding-sibling
+        System.out.println("Preceding-sibling: "+driver.findElement(By.xpath("//header/div/button[2]/preceding-sibling::button")).getText());
+
+        //Parent
+        System.out.println("Parent: "+driver.findElement(By.xpath("//*[.='Home']/../button[2]")).getText());
+        System.out.println("Parent: "+driver.findElement(By.xpath("//*[.='Home']/parent::div/button[3]")).getText());
+
         driver.quit();
     }
 }
