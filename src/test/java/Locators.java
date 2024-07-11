@@ -64,7 +64,7 @@ public class Locators {
         driver.quit();
     }
 
-    @Test(priority = 1)
+    @Test
     public void Siblings(){
 //        System.setProperty("webdriver.chrome.driver","src/main/resources/Drivers/chromedriver.exe");
 //        WebDriver driver=new ChromeDriver();
@@ -85,6 +85,17 @@ public class Locators {
         System.out.println("Parent: "+driver.findElement(By.xpath("//*[.='Home']/../button[2]")).getText());
         System.out.println("Parent: "+driver.findElement(By.xpath("//*[.='Home']/parent::div/button[3]")).getText());
 
+        driver.quit();
+    }
+
+    @Test
+    public void Navigate(){
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://www.google.com");
+        driver.navigate().to("https://www.amazon.in");
+        driver.navigate().back();
+        driver.navigate().forward();
+        driver.navigate().refresh();
         driver.quit();
     }
 }
