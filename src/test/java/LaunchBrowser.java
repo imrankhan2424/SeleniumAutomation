@@ -28,7 +28,5 @@ public class LaunchBrowser {
         //driver.resetInputState(); <-- Not From ChromeDriver
         //Because chromedriver has its own specific methods
         //which will not be applicable for Other broswers
-
-
     }
 }
