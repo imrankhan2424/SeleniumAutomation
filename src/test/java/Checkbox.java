@@ -10,7 +10,7 @@ public class Checkbox {
         driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 
         WebElement friends_and_family_chkbox=driver.findElement(By.cssSelector("input[id*='friendsandfamily']"));
-        Assert.assertEquals(friends_and_family_chkbox.isSelected(),false);
+        Assert.assertFalse(friends_and_family_chkbox.isSelected());
 
         friends_and_family_chkbox.click();
         Assert.assertTrue(friends_and_family_chkbox.isSelected());
