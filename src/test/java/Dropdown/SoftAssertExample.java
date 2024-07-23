@@ -29,8 +29,7 @@ public class SoftAssertExample {
             System.out.println(statusCode);
             a.assertTrue(statusCode<400, "The link with Text '"+link.getText()+"' is broken with code: " +statusCode);
         }
-        a.assertAll();
-
         driver.quit();
+        a.assertAll();
     }
 }
