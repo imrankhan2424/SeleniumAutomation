@@ -22,6 +22,7 @@ public class WebTableSort {
                 next.click();
             }
         }while (price.size()<1);
+        driver.quit();
     }
 
     private static String getItemValue(WebElement s) {
